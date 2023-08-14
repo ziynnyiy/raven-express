@@ -57,7 +57,7 @@ export default function SearchPage() {
           />
         </InputWrapper>
         {!isLoading && phrase !== "" && products.length === 0 && (
-          <h2>無法找到符合條件的商品 "{phrase}"</h2>
+          <h2>無法找到符合條件的商品 &quot;{phrase}&quot;</h2>
         )}
         {isLoading && <Spinner fullWidth={true} />}
         {!isLoading && products.length > 0 && (
