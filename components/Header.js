@@ -5,6 +5,7 @@ import { useContext, useState } from "react";
 import { CartContext } from "./CartContext";
 import BarsIcon from "./icons/Bars";
 import SearchIcon from "./icons/SearchIcon";
+import Logo from "./icons/Logo";
 
 const StyledHeader = styled.header`
   background-color: #222;
@@ -95,7 +96,9 @@ export default function Header() {
     <StyledHeader>
       <Center>
         <Wrapper>
-          <Logo href={"/"}>Raven Express</Logo>
+          <Logo href={"/"}>
+            <Logo /> Raven Express
+          </Logo>
           <StyledNav mobileNavActive={mobileNavActive}>
             <NavLink href={"/"}>首頁</NavLink>
             <NavLink href={"/products"}>所有商品</NavLink>
