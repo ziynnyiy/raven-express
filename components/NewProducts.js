@@ -8,11 +8,17 @@ const Title = styled.h2`
   font-weight: normal;
 `;
 
+const NewProductsWrapper = styled.div`
+  margin-bottom: 40px;
+`;
+
 export default function NewProducts({ products, wishedProducts }) {
   return (
     <Center>
-      <Title>最新上架</Title>
-      <ProductsGrid products={products} wishedProducts={wishedProducts} />
+      <NewProductsWrapper>
+        <Title>最新上架</Title>
+        <ProductsGrid products={products} wishedProducts={wishedProducts} />
+      </NewProductsWrapper>
     </Center>
   );
 }
