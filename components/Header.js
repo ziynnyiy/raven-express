@@ -19,6 +19,8 @@ const Logo = styled(Link)`
   text-decoration: none;
   position: relative;
   z-index: 3;
+  display: flex;
+  align-items: center;
 `;
 
 const Wrapper = styled.div`
