@@ -8,7 +8,7 @@ const StyledImage = styled.img`
 export default function LogoWhite() {
   return (
     <StyledImage
-      src="https://test-for-aws-course-only.s3.ap-southeast-2.amazonaws.com/icons8-bird-48+(4).pngs"
+      src="https://test-for-aws-course-only.s3.ap-southeast-2.amazonaws.com/icons8-bird-48+(4).png"
       alt="logo"
     />
   );
