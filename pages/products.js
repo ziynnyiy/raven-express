@@ -9,13 +9,19 @@ import { getServerSession } from "next-auth";
 import { WishedProduct } from "@/models/WishedProduct";
 import { authOptions } from "./api/auth/[...nextauth]";
 
+const ProductsWrapper = styled.div`
+  margin-bottom: 40px;
+`;
+
 export default function ProductsPage({ products, wishedProducts }) {
   return (
     <>
       <Header />
       <Center>
-        <Title>所有商品</Title>
-        <ProductsGrid products={products} wishedProducts={wishedProducts} />
+        <ProductsWrapper>
+          <Title>所有商品</Title>
+          <ProductsGrid products={products} wishedProducts={wishedProducts} />
+        </ProductsWrapper>
       </Center>
     </>
   );
