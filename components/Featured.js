@@ -24,6 +24,7 @@ const Title = styled.h1`
 const Desc = styled.p`
   color: #aaa;
   font-size: 0.8rem;
+  font-weight: light;
 `;
 
 const ColumnsWrapper = styled.div`
