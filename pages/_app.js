@@ -11,6 +11,7 @@ body{
   margin:0;
   font-family: 'Poppins', sans-serif;
   font-family: 'Noto Sans TC', sans-serif;
+  font-weight: 300;
 }
 hr {
   display: block;
