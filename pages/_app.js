@@ -9,8 +9,8 @@ body{
   background-color: #eee;
   padding:0;
   margin:0;
-  font-family: 'Noto Sans TC', sans-serif;
   font-family: 'Poppins', sans-serif;
+  font-family: 'Noto Sans TC', sans-serif;
 }
 hr {
   display: block;
