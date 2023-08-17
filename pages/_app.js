@@ -13,6 +13,11 @@ body{
   font-family: 'Noto Sans TC', sans-serif;
   font-weight: 300;
 }
+h1, h2, h3, h4, p {
+  font-family: 'Poppins', sans-serif;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-weight: 300;
+}
 hr {
   display: block;
   border: 0;
