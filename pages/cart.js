@@ -33,7 +33,7 @@ const ColumnsWrapper = styled.div`
   }
   tr.total td {
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 500;
   }
 `;
 
