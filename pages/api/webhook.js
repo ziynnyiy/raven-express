@@ -8,7 +8,7 @@ const endpointSecret =
 
 export default async function handler(req, res) {
   await mongooseConnect();
-  const sig = req.headers["whsec_s4jbQpp80EqU0rH48Vx8Dh7ekZoxl9II"];
+  const sig = req.headers["stripe-signature"];
 
   let event;
 
