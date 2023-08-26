@@ -34,7 +34,7 @@ export async function getServerSideProps(ctx) {
   const featuredProduct = await Product.findById(featuredProductId);
   const recentProducts = await Product.find({}, null, {
     sort: { _id: -1 },
-    limit: 8,
+    limit: 10,
   });
   const session = await getServerSession(ctx.req, ctx.res, authOptions);
   // 如果 session 存在並具有 user屬性，則執行前者，反之 return一個empty array
