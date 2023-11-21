@@ -66,8 +66,6 @@ export default function AccountPage() {
     }
     axios.get("/api/address").then((response) => {
       setAddressLoaded(false);
-      setWishedlistLoaded(false);
-      setOrdersLoaded(false);
       setName(response.data?.name);
       setEmail(response.data?.email);
       setCity(response.data?.city);
@@ -77,10 +75,12 @@ export default function AccountPage() {
       setAddressLoaded(true);
     });
     axios.get("/api/wishlist").then((response) => {
+      setWishedlistLoaded(false);
       setWishedProducts(response.data.map((wp) => wp.product));
       setWishedlistLoaded(true);
     });
     axios.get("/api/orders").then((response) => {
+      setOrdersLoaded(false);
       setOrders(response.data);
       setOrdersLoaded(true);
     });
