@@ -41,6 +41,10 @@ const UserInfos = styled.div`
     width: 28px;
     height: 28px;
     margin-top: 3px;
+    display: none;
+    @media screen and (min-width: 768px) {
+      display: flex;
+    }
   }
 `;
 
