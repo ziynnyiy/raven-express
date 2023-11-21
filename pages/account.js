@@ -178,7 +178,7 @@ export default function AccountPage() {
               <WhiteBox>
                 <UserInfos>
                   <h2>{session ? "我的帳戶" : "使用帳戶登入"}</h2>
-                  <GoogleIcon />
+                  {!session && <GoogleIcon />}
                 </UserInfos>
 
                 {!addressLoaded && <Spinner fullWidth={true} />}
