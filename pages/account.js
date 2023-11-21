@@ -12,6 +12,7 @@ import Spinner from "@/components/Spinner";
 import ProductBox from "@/components/ProductBox";
 import Tabs from "@/components/Tabs";
 import SingleOrder from "@/components/SingleOrder";
+import GoogleIcon from "@/components/icons/Google";
 
 const ColsWrapper = styled.div`
   display: grid;
@@ -30,6 +31,17 @@ const WishedProductsGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
+`;
+
+const UserInfos = styled.div`
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  svg {
+    width: 28px;
+    height: 28px;
+    margin-top: 3px;
+  }
 `;
 
 export default function AccountPage() {
@@ -160,7 +172,11 @@ export default function AccountPage() {
           <div>
             <RevealWrapper delay={100}>
               <WhiteBox>
-                <h2>{session ? "我的帳戶" : "使用帳戶登入"}</h2>
+                <UserInfos>
+                  <h2>{session ? "我的帳戶" : "使用帳戶登入"}</h2>
+                  <GoogleIcon />
+                </UserInfos>
+
                 {!addressLoaded && <Spinner fullWidth={true} />}
                 {addressLoaded && session && (
                   <>
