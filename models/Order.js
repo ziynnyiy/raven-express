@@ -14,7 +14,10 @@ const OrderSchema = new Schema(
   },
   {
     timestamps: true,
-  },
+  }
 );
+
+// 在 userEmail 上建立索引
+OrderSchema.index({ userEmail: 1 });
 
 export const Order = models.Order || model("Order", OrderSchema);
