@@ -28,7 +28,7 @@ const WhiteBox = styled(Link)`
   position: relative;
   img {
     max-width: 100%;
-    max-height: 80px;
+    max-height: 90px;
   }
 `;
 
