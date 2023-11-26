@@ -50,6 +50,11 @@ const ShowAllSquare = styled(Link)`
   text-decoration: none;
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: underline;
+  text-underline-offset: 3px;
+`;
+
 export default function CategoriesPage({
   mainCategories,
   categoriesProducts,
@@ -64,7 +69,9 @@ export default function CategoriesPage({
             <CategoryTitle>
               <h2>{cat.name}</h2>
               <div>
-                <Link href={"/category/" + cat._id}>顯示所有內容</Link>
+                <StyledLink href={"/category/" + cat._id}>
+                  顯示所有內容
+                </StyledLink>
               </div>
             </CategoryTitle>
             <CategoryGrid>
