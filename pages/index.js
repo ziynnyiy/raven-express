@@ -7,6 +7,7 @@ import { WishedProduct } from "@/models/WishedProduct";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]";
 import { Setting } from "@/models/Setting";
+import Head from "next/head";
 
 export default function HomePage({
   featuredProduct,
@@ -15,6 +16,15 @@ export default function HomePage({
 }) {
   return (
     <div>
+      <Head>
+        <title>Raven Express</title>
+        <meta name="description" content="The only express that you need." />
+        <link
+          rel="icon"
+          type="image/svg+xml"
+          href="https://test-for-aws-course-only.s3.ap-southeast-2.amazonaws.com/icons8-bird-48+(1).png"
+        />
+      </Head>
       <Header />
       <Featured product={featuredProduct} />
       <NewProducts
