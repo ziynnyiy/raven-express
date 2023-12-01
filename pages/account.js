@@ -13,6 +13,7 @@ import ProductBox from "@/components/ProductBox";
 import Tabs from "@/components/Tabs";
 import SingleOrder from "@/components/SingleOrder";
 import GoogleIcon from "@/components/icons/Google";
+import { Button as MuiButton } from "@material-ui/core";
 
 const ColsWrapper = styled.div`
   display: grid;
@@ -46,6 +47,10 @@ const UserInfos = styled.div`
       display: flex;
     }
   }
+`;
+
+const StyledMuiButton = styled(MuiButton)`
+  width: 100%;
 `;
 
 export default function AccountPage() {
@@ -252,9 +257,13 @@ export default function AccountPage() {
                   </Button>
                 )}
                 {!session && (
-                  <Button primary onClick={login}>
+                  <StyledMuiButton
+                    variant="contained"
+                    color="primary"
+                    onClick={login}
+                  >
                     使用 Google 帳號進行登錄
-                  </Button>
+                  </StyledMuiButton>
                 )}
               </WhiteBox>
             </RevealWrapper>
