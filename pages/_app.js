@@ -3,6 +3,24 @@ import { CartContextProvider } from "@/components/CartContext";
 import { SessionProvider } from "next-auth/react";
 import { useEffect } from "react";
 import { Helmet } from "react-helmet";
+import { createTheme, ThemeProvider } from "@material-ui/core";
+import { purple } from "@material-ui/core/colors";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#4C1D95",
+    },
+    secondary: purple,
+  },
+  // typography: {
+  //   fontFamily: "Poppins",
+  //   fontWeightLight: 400,
+  //   fontWeightRegular: 500,
+  //   fontWeightMedium: 600,
+  //   fontWeightBold: 700,
+  // },
+});
 
 const GlobalStyles = createGlobalStyle`
 body{
@@ -41,18 +59,20 @@ export default function App({
 
   return (
     <>
-      <Helmet>
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&family=Poppins:wght@300;400;500;600;700;900&display=swap"
-        />
-      </Helmet>
-      <GlobalStyles />
-      <SessionProvider session={session}>
-        <CartContextProvider>
-          <Component {...pageProps} />
-        </CartContextProvider>
-      </SessionProvider>
+      <ThemeProvider theme={theme}>
+        <Helmet>
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&family=Poppins:wght@300;400;500;600;700;900&display=swap"
+          />
+        </Helmet>
+        <GlobalStyles />
+        <SessionProvider session={session}>
+          <CartContextProvider>
+            <Component {...pageProps} />
+          </CartContextProvider>
+        </SessionProvider>
+      </ThemeProvider>
     </>
   );
 }
