@@ -310,7 +310,7 @@ export default function CartPage() {
                 />
                 <StyledMuiButton
                   variant="contained"
-                  color="primary"
+                  color="success"
                   onClick={goToPayment}
                 >
                   前往付款
