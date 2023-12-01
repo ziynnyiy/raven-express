@@ -12,6 +12,9 @@ const theme = createTheme({
       main: "#4C1D95",
     },
     secondary: purple,
+    info: {
+      main: "#4a4a4a",
+    },
   },
   // typography: {
   //   fontFamily: "Poppins",
