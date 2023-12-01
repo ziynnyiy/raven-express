@@ -12,6 +12,9 @@ const SearchInput = styled(Input)`
   padding: 5px 10px;
   border-radius: 5px;
   font-size: 1.2rem;
+  :focus {
+    outline: none !important;
+  }
 `;
 const InputWrapper = styled.div`
   position: sticky;
