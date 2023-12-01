@@ -13,7 +13,7 @@ import ProductBox from "@/components/ProductBox";
 import Tabs from "@/components/Tabs";
 import SingleOrder from "@/components/SingleOrder";
 import GoogleIcon from "@/components/icons/Google";
-import { Button as MuiButton } from "@material-ui/core";
+import { Button as MuiButton } from "@mui/material";
 
 const ColsWrapper = styled.div`
   display: grid;

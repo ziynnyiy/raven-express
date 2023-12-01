@@ -3,8 +3,8 @@ import { CartContextProvider } from "@/components/CartContext";
 import { SessionProvider } from "next-auth/react";
 import { useEffect } from "react";
 import { Helmet } from "react-helmet";
-import { createTheme, ThemeProvider } from "@material-ui/core";
-import { purple } from "@material-ui/core/colors";
+import { createTheme, ThemeProvider } from "@mui/material";
+import { purple } from "@mui/material/colors";
 
 const theme = createTheme({
   palette: {

@@ -10,7 +10,7 @@ import Input from "@/components/Input";
 import WhiteBox from "@/components/WhiteBox";
 import { RevealWrapper } from "next-reveal";
 import { useSession } from "next-auth/react";
-import { Button as MuiButton } from "@material-ui/core";
+import { Button as MuiButton } from "@mui/material";
 
 const ColumnsWrapper = styled.div`
   display: grid;
