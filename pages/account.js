@@ -245,16 +245,25 @@ export default function AccountPage() {
                         setCountry(event.target.value);
                       }}
                     />
-                    <Button black block onClick={saveAddress}>
+
+                    <StyledMuiButton
+                      variant="contained"
+                      color="primary"
+                      onClick={saveAddress}
+                    >
                       儲存
-                    </Button>
+                    </StyledMuiButton>
                     <hr />
                   </>
                 )}
                 {session && (
-                  <Button primary onClick={logout}>
+                  <MuiButton
+                    variant="contained"
+                    color="primary"
+                    onClick={logout}
+                  >
                     登出
-                  </Button>
+                  </MuiButton>
                 )}
                 {!session && (
                   <StyledMuiButton
