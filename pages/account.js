@@ -268,7 +268,7 @@ export default function AccountPage() {
                 {!session && (
                   <StyledMuiButton
                     variant="contained"
-                    color="info"
+                    color="secondary"
                     onClick={login}
                   >
                     使用 Google 帳號進行登錄
