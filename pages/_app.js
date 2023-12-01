@@ -4,19 +4,20 @@ import { SessionProvider } from "next-auth/react";
 import { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { createTheme, ThemeProvider } from "@mui/material";
-import { purple } from "@mui/material/colors";
 
 const theme = createTheme({
   palette: {
     primary: {
       main: "#4C1D95",
     },
-    secondary: purple,
+    secondary: {
+      main: "#222222",
+    },
     info: {
       main: "#4a4a4a",
     },
     success: {
-      main: "#222222",
+      main: "#64991e",
     },
   },
   // typography: {
