@@ -8,6 +8,8 @@ import Title from "@/components/Title";
 import { getServerSession } from "next-auth";
 import { WishedProduct } from "@/models/WishedProduct";
 import { authOptions } from "./api/auth/[...nextauth]";
+import { Pagination, Stack } from "@mui/material";
+import { useRouter } from "next/router";
 
 const ProductsWrapper = styled.div`
   margin-bottom: 20px;
@@ -17,7 +19,7 @@ const PaginationWrapper = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 50px;
   div {
     display: flex;
     gap: 15px;
@@ -43,7 +45,7 @@ export default function ProductsPage({
         <ProductsWrapper>
           <Title>所有商品</Title>
           <ProductsGrid products={products} wishedProducts={wishedProducts} />
-          <Pagination currentPage={currentPage} totalPages={totalPages} />
+          <PaginationCompo currentPage={currentPage} totalPages={totalPages} />
         </ProductsWrapper>
       </Center>
     </>
@@ -51,24 +53,19 @@ export default function ProductsPage({
 }
 
 // 分頁連結組件
-function Pagination({ currentPage, totalPages }) {
+function PaginationCompo({ currentPage, totalPages }) {
+  const router = useRouter();
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+
+  const handlePageChange = (event, page) => {
+    router.push(`/products?page=${page}`);
+  };
 
   return (
     <PaginationWrapper>
-      <div>
-        {pages.map((page) => (
-          <span key={page}>
-            {currentPage === page ? (
-              <strong>{page}</strong>
-            ) : (
-              <PaginationLink href={`/products?page=${page}`}>
-                {page}
-              </PaginationLink>
-            )}
-          </span>
-        ))}
-      </div>
+      <Stack spacing={2}>
+        <Pagination count={totalPages} onChange={handlePageChange} />
+      </Stack>
     </PaginationWrapper>
   );
 }
@@ -78,6 +75,7 @@ export async function getServerSideProps(ctx) {
   // const products = await Product.find({}, null, { sort: { _id: -1 } });
 
   // 取得當前頁碼，如果沒有指定則預設為第一頁
+  // ctx.query.page => 可以解讀 query 上的 page
   const currentPage = ctx.query.page ? parseInt(ctx.query.page, 10) : 1;
 
   // 計算總共有多少頁，假設每頁有 PAGE_SIZE 個商品
