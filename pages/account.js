@@ -248,7 +248,7 @@ export default function AccountPage() {
 
                     <StyledMuiButton
                       variant="contained"
-                      color="primary"
+                      color="info"
                       onClick={saveAddress}
                     >
                       儲存
@@ -268,7 +268,7 @@ export default function AccountPage() {
                 {!session && (
                   <StyledMuiButton
                     variant="contained"
-                    color="primary"
+                    color="info"
                     onClick={login}
                   >
                     使用 Google 帳號進行登錄
