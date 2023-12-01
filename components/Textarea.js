@@ -8,6 +8,10 @@ const StyledTextarea = styled.textarea`
   border-radius: 5px;
   box-sizing: border-box;
   font-family: inherit;
+  :focus {
+    outline: none !important;
+  }
+  resize: none;
 `;
 
 export default function Textarea(props) {
