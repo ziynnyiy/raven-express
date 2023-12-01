@@ -3,18 +3,20 @@ import Input from "./Input";
 import WhiteBox from "./WhiteBox";
 import StarsRating from "./StarsRating";
 import Textarea from "./Textarea";
-import Button from "./Button";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "./Spinner";
+import { Button as MuiButton } from "@mui/material";
 
 const Title = styled.h2`
   font-size: 1.2rem;
+  margin-left: 15px;
   margin-bottom: 5px;
 `;
 const Subtitle = styled.h3`
   font-size: 1rem;
   margin-top: 5px;
+  margin-bottom: 8px;
 `;
 const ColsWrapper = styled.div`
   display: grid;
@@ -110,17 +112,18 @@ export default function ProductReviews({ product }) {
               onChange={(event) => {
                 setDescription(event.target.value);
               }}
-              placeholder="分享您的購物體驗並幫助大家作出更好的選擇！"
+              placeholder="分享您的購物體驗並幫助大家作出更好的選擇"
             />
             <div>
-              <Button
+              <MuiButton
+                color="primary"
+                variant="contained"
                 onClick={() => {
                   submitReview(title, description, stars, product);
                 }}
-                primary
               >
                 提交您的評論
-              </Button>
+              </MuiButton>
             </div>
           </WhiteBox>
         </div>
