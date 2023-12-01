@@ -16,6 +16,7 @@
     "@material-ui/styled-engine-sc": "^5.0.0-alpha.11",
     "@mui/icons-material": "^5.14.19",
     "@mui/material": "^5.14.19",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.7",
     "axios": "^1.4.0",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.12",
