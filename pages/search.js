@@ -53,7 +53,7 @@ export default function SearchPage() {
             autoFocus
             value={phrase}
             onChange={(Event) => setPhrase(Event.target.value)}
-            placeholder="輸入你想找的商品..."
+            placeholder="在此輸入您想找的商品"
           />
         </InputWrapper>
         {!isLoading && phrase !== "" && products.length === 0 && (
