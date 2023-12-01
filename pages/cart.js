@@ -10,6 +10,7 @@ import Input from "@/components/Input";
 import WhiteBox from "@/components/WhiteBox";
 import { RevealWrapper } from "next-reveal";
 import { useSession } from "next-auth/react";
+import { Button as MuiButton } from "@material-ui/core";
 
 const ColumnsWrapper = styled.div`
   display: grid;
@@ -73,6 +74,10 @@ const QuantityLabel = styled.span`
 const CityHolder = styled.div`
   display: flex;
   gap: 5px;
+`;
+
+const StyledMuiButton = styled(MuiButton)`
+  width: 100%;
 `;
 
 export default function CartPage() {
@@ -303,9 +308,13 @@ export default function CartPage() {
                     setCountry(event.target.value);
                   }}
                 />
-                <Button black block onClick={goToPayment}>
+                <StyledMuiButton
+                  variant="contained"
+                  color="primary"
+                  onClick={goToPayment}
+                >
                   前往付款
-                </Button>
+                </StyledMuiButton>
               </WhiteBox>
             )}
           </RevealWrapper>
