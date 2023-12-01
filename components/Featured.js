@@ -4,7 +4,6 @@ import ButtonLink from "./ButtonLink";
 import CartIcon from "./icons/CartIcon";
 import FlyingButton from "./FlyingButton";
 import { RevealWrapper } from "next-reveal";
-import { useState } from "react";
 
 const Bg = styled.div`
   background-color: #222;
