@@ -15,6 +15,9 @@ const theme = createTheme({
     info: {
       main: "#4a4a4a",
     },
+    success: {
+      main: "#222222",
+    },
   },
   // typography: {
   //   fontFamily: "Poppins",
