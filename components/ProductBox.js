@@ -1,11 +1,7 @@
 import styled from "styled-components";
-import Button, { ButtonStyle } from "./Button";
-import CartIcon from "./icons/CartIcon";
 import Link from "next/link";
-import { useContext, useEffect, useState } from "react";
-import { CartContext } from "./CartContext";
+import { useState } from "react";
 import FlyingButton from "./FlyingButton";
-import { primary } from "@/lib/colors";
 import HeartOutlineIcon from "./icons/HeartOutlineIcon";
 import HeartSolidIcon from "./icons/HeartSolidIcon";
 import axios from "axios";
