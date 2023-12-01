@@ -8,6 +8,9 @@ const StyledInput = styled.input`
   border-radius: 5px;
   box-sizing: border-box;
   font-family: inherit;
+  :focus {
+    outline: none !important;
+  }
 `;
 
 export default function Input(props) {
