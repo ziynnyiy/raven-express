@@ -248,7 +248,7 @@ export default function AccountPage() {
 
                     <StyledMuiButton
                       variant="contained"
-                      color="success"
+                      color="info"
                       onClick={saveAddress}
                     >
                       儲存
