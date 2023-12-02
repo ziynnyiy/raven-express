@@ -57,7 +57,7 @@ export default function CategoryPage({
   const [filtersValues, setFiltersValues] = useState(defaultFilterValues);
   const [sort, setSort] = useState(defaultSorting);
   const [loadingProducts, setLoadingProducts] = useState(false);
-  const [filterChanged, setFilterChanged] = useState(false);
+
   function handleFilterChange(filterName, filterValue) {
     setFiltersValues((prev) => {
       return prev.map((p) => ({
@@ -65,13 +65,8 @@ export default function CategoryPage({
         value: p.name === filterName ? filterValue : p.value,
       }));
     });
-    setFilterChanged(true);
   }
   useEffect(() => {
-    if (!filterChanged) {
-      return;
-    }
-
     setLoadingProducts(true);
     const catIds = [category._id, ...(subCategories?.map((c) => c._id) || [])];
     const params = new URLSearchParams();
@@ -87,7 +82,7 @@ export default function CategoryPage({
       setProducts(res.data);
       setLoadingProducts(false);
     });
-  }, [filtersValues, sort, filterChanged]);
+  }, [filtersValues, sort]);
 
   return (
     <>
@@ -120,7 +115,6 @@ export default function CategoryPage({
                 value={sort}
                 onChange={(Event) => {
                   setSort(Event.target.value);
-                  setFilterChanged(true);
                 }}
               >
                 <option value="price-asc">價格低到高</option>
