@@ -24,10 +24,12 @@ const ColsWrapper = styled.div`
     margin: 5px;
   }
 `;
+
 const CityHolder = styled.div`
   display: flex;
   gap: 5px;
 `;
+
 const WishedProductsGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -53,6 +55,12 @@ const StyledMuiButton = styled(MuiButton)`
   width: 100%;
 `;
 
+const LoginButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+`;
+
 export default function AccountPage() {
   const { data: session } = useSession();
   const [name, setName] = useState("");
@@ -72,11 +80,17 @@ export default function AccountPage() {
       callbackUrl: process.env.NEXT_PUBLIC_URL,
     });
   }
-  async function login() {
+  async function loginGoogle() {
     await signIn("google", {
       callbackUrl: process.env.NEXT_PUBLIC_URL,
     });
   }
+  async function loginFacebook() {
+    await signIn("facebook", {
+      callbackUrl: process.env.NEXT_PUBLIC_URL,
+    });
+  }
+
   function saveAddress() {
     const data = { name, email, city, streetAddress, postalCode, country };
     axios.put("/api/address", data);
@@ -266,13 +280,22 @@ export default function AccountPage() {
                   </MuiButton>
                 )}
                 {!session && (
-                  <StyledMuiButton
-                    variant="contained"
-                    color="secondary"
-                    onClick={login}
-                  >
-                    使用 Google 帳號進行登錄
-                  </StyledMuiButton>
+                  <LoginButtonWrapper>
+                    <StyledMuiButton
+                      variant="contained"
+                      color="secondary"
+                      onClick={loginGoogle}
+                    >
+                      使用 Google 帳號進行登錄
+                    </StyledMuiButton>
+                    <StyledMuiButton
+                      variant="contained"
+                      color="secondary"
+                      onClick={loginFacebook}
+                    >
+                      使用 Facebook 帳號進行登錄
+                    </StyledMuiButton>
+                  </LoginButtonWrapper>
                 )}
               </WhiteBox>
             </RevealWrapper>
