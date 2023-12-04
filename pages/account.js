@@ -292,8 +292,8 @@ export default function AccountPage() {
                       sx={{
                         display: "flex",
                         justifyContent: "flex-start",
-                        px: 15,
-                        py: 10,
+                        px: 1.2,
+                        py: 1.5,
                       }}
                       style={{ justifyContent: "flex-start" }}
                       onClick={loginGoogle}
@@ -308,8 +308,8 @@ export default function AccountPage() {
                       sx={{
                         display: "flex",
                         justifyContent: "flex-start",
-                        px: 15,
-                        py: 10,
+                        px: 1.2,
+                        py: 1.5,
                       }}
                       style={{ justifyContent: "flex-start" }}
                       onClick={loginFacebook}
