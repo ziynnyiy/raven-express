@@ -13,6 +13,7 @@ import ProductBox from "@/components/ProductBox";
 import Tabs from "@/components/Tabs";
 import SingleOrder from "@/components/SingleOrder";
 import GoogleIcon from "@/components/icons/Google";
+import FacebookIcon from "@/components/icons/Facebook";
 import { Button as MuiButton } from "@mui/material";
 
 const ColsWrapper = styled.div`
@@ -53,6 +54,14 @@ const UserInfos = styled.div`
 
 const StyledMuiButton = styled(MuiButton)`
   width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+  padding: 10px 15px;
+  svg {
+    width: 24px;
+    height: 24px;
+  }
 `;
 
 const LoginButtonWrapper = styled.div`
@@ -197,7 +206,6 @@ export default function AccountPage() {
               <WhiteBox>
                 <UserInfos>
                   <h2>{session ? "我的帳戶" : "使用帳戶登入"}</h2>
-                  {!session && <GoogleIcon />}
                 </UserInfos>
 
                 {!addressLoaded && <Spinner fullWidth={true} />}
@@ -282,18 +290,20 @@ export default function AccountPage() {
                 {!session && (
                   <LoginButtonWrapper>
                     <StyledMuiButton
-                      variant="contained"
-                      color="secondary"
+                      variant="outlined"
+                      color="error"
                       onClick={loginGoogle}
                     >
-                      使用 Google 帳號進行登錄
+                      <GoogleIcon />
+                      透過 Google 登錄
                     </StyledMuiButton>
                     <StyledMuiButton
-                      variant="contained"
-                      color="secondary"
+                      variant="outlined"
+                      color="error"
                       onClick={loginFacebook}
                     >
-                      使用 Facebook 帳號進行登錄
+                      <FacebookIcon />
+                      透過 Facebook 登錄
                     </StyledMuiButton>
                   </LoginButtonWrapper>
                 )}
