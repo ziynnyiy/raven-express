@@ -288,13 +288,13 @@ export default function AccountPage() {
                     >
                       使用 Google 帳號進行登錄
                     </StyledMuiButton>
-                    <StyledMuiButton
+                    {/* <StyledMuiButton
                       variant="contained"
                       color="secondary"
                       onClick={loginFacebook}
                     >
                       使用 Facebook 帳號進行登錄
-                    </StyledMuiButton>
+                    </StyledMuiButton> */}
                   </LoginButtonWrapper>
                 )}
               </WhiteBox>
