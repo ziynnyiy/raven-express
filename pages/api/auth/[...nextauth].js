@@ -19,4 +19,4 @@ export const authOptions = {
   adapter: MongoDBAdapter(clientPromise),
 };
 
-export default (req, res) => NextAuth(req, res, authOptions);
+export default NextAuth(authOptions);
