@@ -53,9 +53,6 @@ const UserInfos = styled.div`
 `;
 
 const StyledMuiButton = styled(MuiButton)`
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
   gap: 8px;
   svg {
     width: 24px;
@@ -291,9 +288,14 @@ export default function AccountPage() {
                     <StyledMuiButton
                       variant="outlined"
                       color="error"
+                      fullWidth={true}
                       sx={{
-                        padding: 1.2,
+                        display: "flex",
+                        justifyContent: "flex-start",
+                        px: 15,
+                        py: 10,
                       }}
+                      style={{ justifyContent: "flex-start" }}
                       onClick={loginGoogle}
                     >
                       <GoogleIcon />
@@ -302,9 +304,14 @@ export default function AccountPage() {
                     <StyledMuiButton
                       variant="outlined"
                       color="error"
+                      fullWidth={true}
                       sx={{
-                        padding: 1.2,
+                        display: "flex",
+                        justifyContent: "flex-start",
+                        px: 15,
+                        py: 10,
                       }}
+                      style={{ justifyContent: "flex-start" }}
                       onClick={loginFacebook}
                     >
                       <FacebookIcon />
