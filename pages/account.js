@@ -91,9 +91,9 @@ export default function AccountPage() {
     });
   }
   async function loginFacebook() {
-    await signIn("facebook", {
-      callbackUrl: process.env.NEXT_PUBLIC_URL,
-    });
+    // await signIn("facebook", {
+    //   callbackUrl: process.env.NEXT_PUBLIC_URL,
+    // });
   }
 
   function saveAddress() {
