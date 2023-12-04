@@ -57,7 +57,6 @@ const StyledMuiButton = styled(MuiButton)`
   display: flex;
   justify-content: flex-start;
   gap: 8px;
-  padding: 10px 15px;
   svg {
     width: 24px;
     height: 24px;
@@ -292,6 +291,9 @@ export default function AccountPage() {
                     <StyledMuiButton
                       variant="outlined"
                       color="error"
+                      sx={{
+                        padding: 1.2,
+                      }}
                       onClick={loginGoogle}
                     >
                       <GoogleIcon />
@@ -300,6 +302,9 @@ export default function AccountPage() {
                     <StyledMuiButton
                       variant="outlined"
                       color="error"
+                      sx={{
+                        padding: 1.2,
+                      }}
                       onClick={loginFacebook}
                     >
                       <FacebookIcon />
