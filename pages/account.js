@@ -52,17 +52,17 @@ const UserInfos = styled.div`
   }
 `;
 
-// const StyledMuiButton = styled(MuiButton)`
-//   width: 100%;
-//   display: flex;
-//   justify-content: flex-start;
-//   gap: 8px;
-//   padding: 10px 15px;
-//   svg {
-//     width: 24px;
-//     height: 24px;
-//   }
-// `;
+const StyledMuiButton = styled(MuiButton)`
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+  padding: 10px 15px;
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+`;
 
 const LoginButtonWrapper = styled.div`
   display: flex;
@@ -289,13 +289,13 @@ export default function AccountPage() {
                 )}
                 {!session && (
                   <LoginButtonWrapper>
-                    {/* <StyledMuiButton
+                    <StyledMuiButton
                       variant="outlined"
                       color="error"
                       onClick={loginGoogle}
                     >
                       <GoogleIcon />
-                      透過 Google 登錄
+                      透過 Google 進行登錄
                     </StyledMuiButton>
                     <StyledMuiButton
                       variant="outlined"
@@ -303,8 +303,8 @@ export default function AccountPage() {
                       onClick={loginFacebook}
                     >
                       <FacebookIcon />
-                      透過 Facebook 登錄
-                    </StyledMuiButton> */}
+                      透過 Facebook 進行登錄
+                    </StyledMuiButton>
                   </LoginButtonWrapper>
                 )}
               </WhiteBox>
