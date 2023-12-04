@@ -268,6 +268,7 @@ export default function AccountPage() {
                       variant="contained"
                       color="info"
                       onClick={saveAddress}
+                      fullWidth={true}
                     >
                       儲存
                     </StyledMuiButton>
