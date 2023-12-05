@@ -111,6 +111,15 @@ export default function ProductBox({
     setIsWished(nextValue);
   }
 
+  // aws cloudfront
+  const cloudFrontUrl = "https://d8h11e8zp8mln.cloudfront.net/";
+  const replaceUrlPrefix = (url) => {
+    return url.replace(
+      "https://next-ecommerce-project.s3.amazonaws.com/",
+      cloudFrontUrl
+    );
+  };
+
   return (
     <ProductWrapper>
       <WhiteBox href={url}>
@@ -118,14 +127,14 @@ export default function ProductBox({
           <WishlistButton wished={isWished} onClick={addToWishlist}>
             {isWished ? <HeartSolidIcon /> : <HeartOutlineIcon />}
           </WishlistButton>
-          <img src={images?.[0]} alt="" />
+          <img src={replaceUrlPrefix(images?.[0])} alt="" />
         </div>
       </WhiteBox>
       <ProductInfoBox>
         <Title href={url}>{title}</Title>
         <PriceRow>
           <Price>${price}</Price>
-          <FlyingButton _id={_id} src={images?.[0]}>
+          <FlyingButton _id={_id} src={replaceUrlPrefix(images?.[0])}>
             加入購物車
           </FlyingButton>
         </PriceRow>
