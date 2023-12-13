@@ -375,6 +375,7 @@ export default function AccountPage() {
       setOrdersLoaded(true);
     });
   }, [session]);
+
   function productRemovedFromWishlist(idToRemove) {
     setWishedProducts((products) => {
       return [...products.filter((p) => p._id.toString() !== idToRemove)];
