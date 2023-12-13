@@ -28,7 +28,7 @@ const Filter = styled.div`
   padding: 5px 10px;
   border-radius: 5px;
   display: flex;
-  gap: 5px;
+  gap: 3px;
   color: #444;
   align-items: center;
   select {
@@ -36,6 +36,8 @@ const Filter = styled.div`
     border: 0;
     font-size: inherit;
     color: #444;
+    outline: none !important;
+    margin-top: 3px;
   }
 `;
 
