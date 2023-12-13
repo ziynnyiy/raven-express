@@ -13,9 +13,10 @@ import Tabs from "@/components/Tabs";
 import SingleOrder from "@/components/SingleOrder";
 import GoogleIcon from "@/components/icons/Google";
 import FacebookIcon from "@/components/icons/Facebook";
-import { Button as MuiButton, TextField } from "@mui/material";
+import { Button as MuiButton } from "@mui/material";
 import AppleIcon from "@/components/icons/Apple";
 import { useRouter } from "next/router";
+import SuccessIcon from "@/components/icons/Successs";
 
 const ColsWrapper = styled.div`
   display: grid;
@@ -160,6 +161,25 @@ const StyledErrorTag = styled.div`
     font-weight: 400;
   }
 `;
+const StyledRegSusWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+const StyledRegSusTitle = styled.p`
+  font-size: 20px;
+  font-weight: 500;
+`;
+const StyledRegSusContent = styled.div`
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 15px;
+`;
+
+// const StyledMuiButtonWrapper = styled.div`
+//   margin-top: 20px;
+// `;
 
 export default function AccountPage() {
   const { data: session } = useSession();
@@ -431,7 +451,7 @@ export default function AccountPage() {
             <RevealWrapper delay={100}>
               <WhiteBox>
                 <UserInfos>
-                  {!openRegister && (
+                  {!openRegister && !openRegSus && (
                     <h2>{session ? "我的帳戶" : "登入帳號"}</h2>
                   )}
                 </UserInfos>
@@ -676,7 +696,24 @@ export default function AccountPage() {
                     </form>
                   </>
                 )}
-                {!session && openRegSus && <div></div>}
+                {!session && openRegSus && (
+                  <StyledRegSusWrapper>
+                    <SuccessIcon />
+                    <StyledRegSusTitle>註冊成功</StyledRegSusTitle>
+                    <StyledRegSusContent>
+                      點擊下列按鈕以完成登錄
+                    </StyledRegSusContent>
+
+                    <MuiButton
+                      onClick={openLoginPageHandle}
+                      variant="contained"
+                      color="success"
+                      fullWidth={true}
+                    >
+                      返回登入畫面
+                    </MuiButton>
+                  </StyledRegSusWrapper>
+                )}
               </WhiteBox>
             </RevealWrapper>
           </div>
