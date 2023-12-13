@@ -1,7 +1,7 @@
 export default function GoogleIcon({ className = "w-6 h-6" }) {
   return (
     <svg
-      enable-background="new 0 0 48 48"
+      enableBackground="new 0 0 48 48"
       height="48"
       viewBox="0 0 48 48"
       width="48"
