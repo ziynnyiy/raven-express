@@ -19,6 +19,7 @@ export default async function handler(req, res) {
     streetAddress,
     country,
     cartProducts,
+    userId,
   } = req.body;
   await mongooseConnect();
   const productIds = cartProducts;
@@ -56,6 +57,7 @@ export default async function handler(req, res) {
     country,
     paid: false,
     userEmail: session?.user?.email,
+    userId,
   });
 
   const shippingFeeSetting = await Setting.findOne({ name: "shippingFee" });
