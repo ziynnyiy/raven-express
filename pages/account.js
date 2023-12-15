@@ -20,7 +20,10 @@ import SuccessIcon from "@/components/icons/Successs";
 
 const ColsWrapper = styled.div`
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: 1;
+  @media screen and (min-width: 768px) {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
   gap: 40px;
   margin: 40px 0;
   p {
@@ -55,21 +58,18 @@ const UserInfos = styled.div`
 `;
 
 const StyledGoogleButton = styled(MuiButton)`
-  gap: 8px;
   svg {
     width: 26px;
     height: 26px;
   }
 `;
 const StyledFacebookButton = styled(MuiButton)`
-  gap: 8px;
   svg {
     width: 24px;
     height: 24px;
   }
 `;
 const StyledAppleButton = styled(MuiButton)`
-  gap: 8px;
   svg {
     width: 24px;
     height: 24px;
@@ -78,7 +78,11 @@ const StyledAppleButton = styled(MuiButton)`
 
 const LoginButtonWrapper = styled.div`
   display: flex;
-  flex-direction: row;
+
+  flex-direction: column;
+  @media screen and (min-width: 358px) {
+    flex-direction: row;
+  }
   gap: 32px;
   margin-top: 24px;
 `;
@@ -124,9 +128,9 @@ const StyledLoginCTA = styled.p`
 `;
 
 const StyledLoginInput = styled.input`
-  width: 244px;
-  height: 21.55px;
-  padding: 8.5px 14px;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10.9px 14px;
   font-size: 14px;
   border-radius: 5px;
   border: 1px solid #c4c4c4;
@@ -135,9 +139,9 @@ const StyledLoginInput = styled.input`
   }
 `;
 const StyledRegInput = styled.input`
-  width: 244px;
-  height: 21.55px;
-  padding: 7px 12px;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 9.38px 12px;
   font-size: 14px;
   border-radius: 5px;
   border: 1px solid #c4c4c4;
