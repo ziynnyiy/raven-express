@@ -93,6 +93,8 @@ export default function CartPage() {
   const [country, setCountry] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
   const [shippingFee, setShippingFee] = useState(null);
+  const [userId, setUserId] = useState("");
+
   useEffect(() => {
     if (cartProducts.length > 0) {
       axios.post("/api/cart", { ids: cartProducts }).then((response) => {
@@ -126,6 +128,7 @@ export default function CartPage() {
       setStreetAddress(response?.data?.streetAddress);
       setCountry(response?.data?.country);
     });
+    setUserId(session.user.id);
   }, [session]);
 
   function moreOfThisProduct(productId) {
@@ -143,6 +146,7 @@ export default function CartPage() {
       streetAddress,
       country,
       cartProducts,
+      userId,
     });
     if (response.data.url) {
       window.location = response.data.url;
