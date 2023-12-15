@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 const StyledSusIcon = styled.img`
-  width: 88px;
-  height: 88px;
+  width: 77px;
+  height: 77px;
+  margin: 20px 0 10px 0;
 `;
 
 export default function SuccessIcon() {
