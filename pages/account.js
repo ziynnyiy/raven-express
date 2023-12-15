@@ -177,10 +177,6 @@ const StyledRegSusContent = styled.div`
   margin-bottom: 15px;
 `;
 
-// const StyledMuiButtonWrapper = styled.div`
-//   margin-top: 20px;
-// `;
-
 export default function AccountPage() {
   const { data: session } = useSession();
   const [name, setName] = useState("");
@@ -210,6 +206,7 @@ export default function AccountPage() {
   const [regPassword, setRegPassword] = useState("");
   const [regPassword2, setRegPassword2] = useState("");
   const [openRegSus, setOpenRegSus] = useState(false);
+  const [regSusLoaded, setRegSusLoaded] = useState(true);
 
   // validations
   const validationErrors = {};
@@ -278,8 +275,8 @@ export default function AccountPage() {
     setRegValidErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
-      console.log(loginValidErrors);
-      console.log({ regEmail, regPassword });
+      setRegSusLoaded(false);
+
       axios
         .post("api/register", {
           userEmail: regEmail,
@@ -291,7 +288,7 @@ export default function AccountPage() {
           setRegPassword2("");
           setOpenRegister(false);
           setOpenRegSus(true);
-          console.log(response.data);
+          setRegSusLoaded(true);
         });
     }
   }
@@ -322,18 +319,23 @@ export default function AccountPage() {
     setLoginValidErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
-      const res = await signIn("Credentials", {
-        loginEmail,
-        loginPassword,
-        redirect: false,
-      });
-      if (res?.error) return setLoginError(res.error);
-      router.replace("/");
+      try {
+        const res = await signIn("credentials", {
+          redirect: false,
+          email: loginEmail,
+          password: loginPassword,
+          callbackUrl: "http://localhost:4000/account", // production 時需要改掉
+        });
+        if (res?.error) return setLoginError(res.error);
+        router.replace("/account");
+      } catch (error) {
+        console.error("登入期間發生錯誤：", error);
+      }
     }
   }
 
   function checkPassword(value) {
-    let password = /^[A-Za-z0-9]{8,30}$/;
+    let password = /^[A-Za-z0-9]{6,30}$/;
     if (value.match(password)) {
       return true;
     } else {
@@ -517,14 +519,14 @@ export default function AccountPage() {
                       }}
                     />
 
-                    <StyleMuiButton
+                    <MuiButton
                       variant="contained"
                       color="info"
                       onClick={saveAddress}
                       fullWidth={true}
                     >
                       儲存
-                    </StyleMuiButton>
+                    </MuiButton>
                     <hr />
                   </>
                 )}
@@ -638,7 +640,6 @@ export default function AccountPage() {
                     <form onSubmit={handleRegister}>
                       <h2>立即註冊</h2>
                       <StyledInputWrapper>
-                        <div></div>
                         <StyledRegInput
                           type="email"
                           value={regEmail}
@@ -697,7 +698,7 @@ export default function AccountPage() {
                     </form>
                   </>
                 )}
-                {!session && openRegSus && (
+                {!session && openRegSus && regSusLoaded && (
                   <StyledRegSusWrapper>
                     <SuccessIcon />
                     <StyledRegSusTitle>註冊成功</StyledRegSusTitle>
@@ -714,6 +715,9 @@ export default function AccountPage() {
                       返回登入畫面
                     </MuiButton>
                   </StyledRegSusWrapper>
+                )}
+                {!session && openRegSus && !regSusLoaded && (
+                  <Spinner fullWidth={true} color="success" />
                 )}
               </WhiteBox>
             </RevealWrapper>
