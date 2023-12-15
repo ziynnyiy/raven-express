@@ -11,6 +11,7 @@ const OrderSchema = new Schema(
     streetAddress: String,
     country: String,
     paid: Boolean,
+    userId: String,
   },
   {
     timestamps: true,
