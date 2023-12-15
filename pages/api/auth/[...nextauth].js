@@ -6,6 +6,7 @@ import clientPromise from "@/lib/mongodb";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { mongooseConnect } from "@/lib/mongoose";
 import { User } from "@/models/User";
+import bcrypt from "bcrypt";
 
 export const authOptions = {
   adapter: MongoDBAdapter(clientPromise),
@@ -15,25 +16,35 @@ export const authOptions = {
   secret: process.env.SECRET,
   providers: [
     CredentialsProvider({
-      name: "Credentials",
-      credentials: {
-        username: { label: "Username", type: "text" },
-        password: { label: "Password", type: "password" },
-      },
+      name: "credentials",
+      credentials: {}, // prevent Nextauth from creating default UI !
       async authorize(credentials, req) {
-        await mongooseConnect();
-        const { email, password } = credentials;
+        try {
+          await mongooseConnect();
 
-        const user = await User.findOne({ userEmail: email });
-        if (!user) throw Error("信箱或密碼錯誤 !");
+          if (!credentials.email || !credentials.password) {
+            return null;
+          }
 
-        const passwordMatch = await user.comparePassword(password);
-        if (!passwordMatch) throw Error("信箱或密碼錯誤 !");
+          // 信箱驗證
+          const user = await User.findOne({ userEmail: credentials.email });
+          if (!user) {
+            return null;
+          }
 
-        return {
-          userEmail: user.userEmail,
-          id: user._id,
-        };
+          // 密碼驗證
+          const isPasswordMatch = await bcrypt.compare(
+            credentials.password,
+            user.password
+          );
+          if (!isPasswordMatch) {
+            return null;
+          }
+
+          return { id: user.id, email: user.userEmail };
+        } catch (error) {
+          return Promise.reject(new Error("發生未知錯誤 !"));
+        }
       },
     }),
 
@@ -47,17 +58,20 @@ export const authOptions = {
     }),
   ],
   callbacks: {
-    jwt(params) {
-      if (params.user?.id) {
-        params.token.id = params.user.id;
+    async jwt({ token, user, session }) {
+      if (user) {
+        token.id = user.id;
+        token.email = user.email;
       }
-      // return final token
-      return params.token;
+      console.log("jwt callback", { token, user, session });
+      return token;
     },
-    session({ session, token }) {
+    async session({ session, token, user }) {
       if (session.user) {
         session.user.id = token.id;
+        session.user.email = token.email;
       }
+      console.log("session callback", { session, token, user });
       return session;
     },
   },
