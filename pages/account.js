@@ -210,7 +210,6 @@ export default function AccountPage() {
   const [regPassword, setRegPassword] = useState("");
   const [regPassword2, setRegPassword2] = useState("");
   const [openRegSus, setOpenRegSus] = useState(false);
-  const [regSusLoaded, setRegSusLoaded] = useState(true);
 
   // validations
   const validationErrors = {};
@@ -279,8 +278,6 @@ export default function AccountPage() {
     setRegValidErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
-      setRegSusLoaded(false);
-
       axios
         .post("api/register", {
           userEmail: regEmail,
@@ -292,7 +289,6 @@ export default function AccountPage() {
           setRegPassword2("");
           setOpenRegister(false);
           setOpenRegSus(true);
-          setRegSusLoaded(true);
         });
     }
   }
@@ -564,6 +560,7 @@ export default function AccountPage() {
                           label="Password"
                           name="password"
                           type="password"
+                          autocomplete="current-password"
                           value={loginPassword}
                           placeholder="密碼"
                           onChange={(event) => {
@@ -661,6 +658,7 @@ export default function AccountPage() {
                           type="password"
                           value={regPassword}
                           placeholder="請輸入密碼 ( 6~16位英數混合 )"
+                          autocomplete="current-password"
                           onChange={(event) => {
                             setRegPassword(event.target.value);
                           }}
@@ -674,6 +672,7 @@ export default function AccountPage() {
                           type="password"
                           value={regPassword2}
                           placeholder="確認密碼"
+                          autocomplete="current-password"
                           onChange={(event) => {
                             setRegPassword2(event.target.value);
                           }}
@@ -702,7 +701,7 @@ export default function AccountPage() {
                     </form>
                   </>
                 )}
-                {!session && openRegSus && regSusLoaded && (
+                {!session && openRegSus && (
                   <StyledRegSusWrapper>
                     <SuccessIcon />
                     <StyledRegSusTitle>註冊成功</StyledRegSusTitle>
@@ -719,9 +718,6 @@ export default function AccountPage() {
                       返回登入畫面
                     </MuiButton>
                   </StyledRegSusWrapper>
-                )}
-                {!session && openRegSus && !regSusLoaded && (
-                  <Spinner fullWidth={true} color="success" />
                 )}
               </WhiteBox>
             </RevealWrapper>
