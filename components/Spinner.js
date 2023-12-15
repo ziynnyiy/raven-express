@@ -14,11 +14,11 @@ const Wrapper = styled.div`
       `}
 `;
 
-export default function Spinner({ fullWidth }) {
+export default function Spinner({ fullWidth, color = "primary" }) {
   return (
     <Wrapper fullWidth={fullWidth}>
       <Stack spacing={2} direction="row">
-        <CircularProgress color="primary" />
+        <CircularProgress color={color} />
       </Stack>
     </Wrapper>
   );
