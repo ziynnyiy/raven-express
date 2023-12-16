@@ -15,7 +15,6 @@ import GoogleIcon from "@/components/icons/Google";
 import FacebookIcon from "@/components/icons/Facebook";
 import { Button as MuiButton } from "@mui/material";
 import AppleIcon from "@/components/icons/Apple";
-import { useRouter } from "next/router";
 import SuccessIcon from "@/components/icons/Successs";
 
 const ColsWrapper = styled.div`
@@ -203,7 +202,6 @@ export default function AccountPage() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [loginError, setLoginError] = useState("");
-  const router = useRouter();
 
   // register
   const [regEmail, setRegEmail] = useState("");
@@ -334,10 +332,9 @@ export default function AccountPage() {
           password: loginPassword,
           callbackUrl: "http://localhost:4000/account", // production 時需要改掉
         });
-        if (res === null) {
-          return setLoginError("帳號或密碼錯誤");
+        if (Object.keys(validationErrors).length === 0) {
+          setLoginError("帳號或密碼不相符 !");
         }
-        // router.replace("/account");
       } catch (error) {
         console.error("登入期間發生錯誤：", error);
       }
