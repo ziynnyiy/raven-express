@@ -278,17 +278,25 @@ export default function AccountPage() {
     setRegValidErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
-      axios
+      await axios
         .post("api/register", {
           userEmail: regEmail,
           password: regPassword,
         })
         .then((response) => {
-          setRegEmail("");
-          setRegPassword("");
-          setRegPassword2("");
-          setOpenRegister(false);
-          setOpenRegSus(true);
+          if (response.data.message === "電子信箱已經被註冊過") {
+            if (validationErrors.regEmailExisted != "信箱已經被註冊過") {
+              validationErrors.regEmailExisted = "信箱已經被註冊過";
+              setRegValidErrors({ ...validationErrors }); // 用這種方式創建了一個新的 Object ，因此 React 會視為對象已經改變，進而觸發組件的重新渲染。
+            }
+            return;
+          } else {
+            setRegEmail("");
+            setRegPassword("");
+            setRegPassword2("");
+            setOpenRegister(false);
+            setOpenRegSus(true);
+          }
         });
     }
   }
@@ -326,8 +334,10 @@ export default function AccountPage() {
           password: loginPassword,
           callbackUrl: "http://localhost:4000/account", // production 時需要改掉
         });
-        if (res?.error) return setLoginError(res.error);
-        router.replace("/account");
+        if (res === null) {
+          return setLoginError("帳號或密碼錯誤");
+        }
+        // router.replace("/account");
       } catch (error) {
         console.error("登入期間發生錯誤：", error);
       }
@@ -571,6 +581,7 @@ export default function AccountPage() {
                           {loginValidErrors.loginPassword && (
                             <span>{loginValidErrors.loginPassword}</span>
                           )}
+                          {loginError && <span>{loginError}</span>}
                         </StyledErrorTag>
                       </StyledInputWrapper>
 
@@ -679,7 +690,11 @@ export default function AccountPage() {
                         />
                         <StyledErrorTag>
                           {regValidErrors.regPassword2 && (
-                            <span>regValidErrors.regPassword2</span>
+                            <span>{regValidErrors.regPassword2}</span>
+                          )}
+
+                          {regValidErrors.regEmailExisted && (
+                            <span>{regValidErrors.regEmailExisted}</span>
                           )}
                         </StyledErrorTag>
                       </StyledInputWrapper>
