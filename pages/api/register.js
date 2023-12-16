@@ -7,7 +7,7 @@ export default async function handle(req, res) {
 
   const oldUser = await User.findOne({ userEmail: userEmail });
   if (oldUser) {
-    return res.status(422).json({ error: "電子信箱已經被註冊過 !" });
+    return res.json({ message: "電子信箱已經被註冊過" });
   }
   const user = await User.create({ userEmail, password });
 
