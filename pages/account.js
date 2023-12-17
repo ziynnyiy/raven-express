@@ -235,7 +235,7 @@ export default function AccountPage() {
   function saveAddress() {
     const data = { name, email, city, streetAddress, postalCode, country };
     axios.put("/api/address", data);
-    toast.success("資料儲存成功 !");
+    toast.success("儲存成功 !");
   }
 
   function openRegPageHandle() {

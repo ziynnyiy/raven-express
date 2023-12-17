@@ -71,6 +71,11 @@ export default function App({
           <CartContextProvider>
             <Component {...pageProps} />
             <Toaster
+              toastOptions={{
+                style: {
+                  padding: "8px 19px",
+                },
+              }}
               containerStyle={{
                 top: "85px",
               }}
