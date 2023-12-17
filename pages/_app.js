@@ -1,9 +1,9 @@
 import { createGlobalStyle } from "styled-components";
 import { CartContextProvider } from "@/components/CartContext";
 import { SessionProvider } from "next-auth/react";
-import { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { createTheme, ThemeProvider } from "@mui/material";
+import { Toaster } from "react-hot-toast";
 
 const theme = createTheme({
   palette: {
@@ -57,16 +57,6 @@ export default function App({
   Component,
   pageProps: { session, ...pageProps },
 }) {
-  // useEffect(() => {
-  //   // After component mount, change the rel attribute to "stylesheet"
-  //   const linkElement = document.querySelector('link[rel="preload"]');
-  //   if (linkElement) {
-  //     linkElement.onload = () => {
-  //       linkElement.rel = "stylesheet";
-  //     };
-  //   }
-  // }, []);
-
   return (
     <>
       <ThemeProvider theme={theme}>
@@ -80,6 +70,17 @@ export default function App({
         <SessionProvider session={session}>
           <CartContextProvider>
             <Component {...pageProps} />
+            <Toaster
+              toastOptions={{
+                style: {
+                  padding: "8px 19px",
+                },
+              }}
+              containerStyle={{
+                top: "85px",
+              }}
+              position="top-center"
+            />
           </CartContextProvider>
         </SessionProvider>
       </ThemeProvider>

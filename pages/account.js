@@ -16,6 +16,7 @@ import FacebookIcon from "@/components/icons/Facebook";
 import { Button as MuiButton } from "@mui/material";
 import AppleIcon from "@/components/icons/Apple";
 import SuccessIcon from "@/components/icons/Successs";
+import toast from "react-hot-toast";
 
 const ColsWrapper = styled.div`
   display: grid;
@@ -234,6 +235,7 @@ export default function AccountPage() {
   function saveAddress() {
     const data = { name, email, city, streetAddress, postalCode, country };
     axios.put("/api/address", data);
+    toast.success("儲存成功 !");
   }
 
   function openRegPageHandle() {
