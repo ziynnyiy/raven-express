@@ -7,18 +7,7 @@ import FacebookIcon from "@/components/icons/Facebook";
 import AppleIcon from "@/components/icons/Apple";
 import StyledInputWrapper from "../StyledInputWrapper";
 import StyledErrorTag from "../StyledErrorTag";
-
-const StyledLoginInput = styled.input`
-  box-sizing: border-box;
-  width: 100%;
-  padding: 10.9px 14px;
-  font-size: 14px;
-  border-radius: 5px;
-  border: 1px solid #c4c4c4;
-  :focus {
-    outline: none !important;
-  }
-`;
+import StyledInput from "../StyledInput";
 
 const StyledRegCTA = styled.p`
   display: flex;
@@ -171,10 +160,11 @@ export default function LoginForm({
     <>
       <form onSubmit={handleLogin}>
         <StyledInputWrapper>
-          <StyledLoginInput
+          <StyledInput
             label="Email"
             name="email"
             type="email"
+            login={1}
             value={loginEmail}
             placeholder="電子信箱"
             onChange={(event) => {
@@ -184,10 +174,11 @@ export default function LoginForm({
           <StyledErrorTag>
             <span>{loginValidErrors.loginEmail}</span>
           </StyledErrorTag>
-          <StyledLoginInput
+          <StyledInput
             label="Password"
             name="password"
             type="password"
+            login={1}
             autocomplete="current-password"
             value={loginPassword}
             placeholder="密碼"
