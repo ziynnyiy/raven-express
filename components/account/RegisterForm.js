@@ -4,18 +4,7 @@ import styled from "styled-components";
 import axios from "axios";
 import StyledInputWrapper from "../StyledInputWrapper";
 import StyledErrorTag from "../StyledErrorTag";
-
-const StyledRegInput = styled.input`
-  box-sizing: border-box;
-  width: 100%;
-  padding: 9.38px 12px;
-  font-size: 14px;
-  border-radius: 5px;
-  border: 1px solid #c4c4c4;
-  :focus {
-    outline: none !important;
-  }
-`;
+import StyledInput from "../StyledInput";
 
 const StyledLoginCTA = styled.p`
   display: flex;
@@ -122,10 +111,11 @@ export default function RegisterForm({
       <form onSubmit={handleRegister}>
         <h2>立即註冊</h2>
         <StyledInputWrapper>
-          <StyledRegInput
+          <StyledInput
             type="email"
             value={regEmail}
             placeholder="請輸入電子信箱"
+            register={1}
             onChange={(event) => {
               setRegEmail(event.target.value);
             }}
@@ -133,10 +123,11 @@ export default function RegisterForm({
           <StyledErrorTag>
             {regValidErrors.regEmail && <span>{regValidErrors.regEmail}</span>}
           </StyledErrorTag>
-          <StyledRegInput
+          <StyledInput
             type="password"
             value={regPassword}
             placeholder="請輸入密碼 ( 6~16位英數混合 )"
+            register={1}
             autocomplete="current-password"
             onChange={(event) => {
               setRegPassword(event.target.value);
@@ -147,10 +138,11 @@ export default function RegisterForm({
               <span>{regValidErrors.regPassword}</span>
             )}
           </StyledErrorTag>
-          <StyledRegInput
+          <StyledInput
             type="password"
             value={regPassword2}
             placeholder="確認密碼"
+            register={1}
             autocomplete="current-password"
             onChange={(event) => {
               setRegPassword2(event.target.value);
