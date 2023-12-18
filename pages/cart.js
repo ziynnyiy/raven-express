@@ -104,6 +104,7 @@ export default function CartPage() {
       setProducts([]);
     }
   }, [cartProducts]);
+
   useEffect(() => {
     if (typeof window === "undefined") {
       return;
@@ -116,6 +117,7 @@ export default function CartPage() {
       setShippingFee(response.data.value);
     });
   }, []);
+
   useEffect(() => {
     if (!session) {
       return;
@@ -134,9 +136,11 @@ export default function CartPage() {
   function moreOfThisProduct(productId) {
     addProduct(productId);
   }
+
   function lessOfThisProduct(productId) {
     removeProduct(productId);
   }
+
   async function goToPayment() {
     const response = await axios.post("/api/checkout", {
       name,
@@ -152,6 +156,7 @@ export default function CartPage() {
       window.location = response.data.url;
     }
   }
+
   let productsTotal = 0;
   for (const productId of cartProducts) {
     const price =

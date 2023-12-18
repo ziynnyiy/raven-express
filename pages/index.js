@@ -1,8 +1,8 @@
 import Header from "@/components/Header";
-import Featured from "@/components/Featured";
+import Featured from "@/components/index/Featured";
 import { Product } from "@/models/Product";
 import { mongooseConnect } from "@/lib/mongoose";
-import NewProducts from "@/components/NewProducts";
+import NewProducts from "@/components/index/NewProducts";
 import { WishedProduct } from "@/models/WishedProduct";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]";

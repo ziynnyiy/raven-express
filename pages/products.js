@@ -26,10 +26,6 @@ const PaginationWrapper = styled.div`
   }
 `;
 
-const PaginationLink = styled.a`
-  text-decoration: none;
-`;
-
 const PAGE_SIZE = 12; // 每頁顯示的商品數量
 
 export default function ProductsPage({
