@@ -144,14 +144,13 @@ export default function CartPage() {
 
   async function goToPayment() {
     if (
-      !name ||
-      !email ||
-      !city ||
-      !postalCode ||
-      !streetAddress ||
-      !country ||
-      !cartProducts ||
-      !userId
+      name === "" ||
+      email === "" ||
+      city === "" ||
+      postalCode === "" ||
+      streetAddress === "" ||
+      country === "" ||
+      cartProducts === ""
     ) {
       toast.error("請填妥訂單資訊 !");
       return;
@@ -165,7 +164,7 @@ export default function CartPage() {
       streetAddress,
       country,
       cartProducts,
-      userId,
+      userId, // 如 userId存在代表付款帳戶已進行登入
     });
     if (response.data.url) {
       window.location = response.data.url;
