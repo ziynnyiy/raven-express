@@ -11,6 +11,7 @@ import WhiteBox from "@/components/WhiteBox";
 import { RevealWrapper } from "next-reveal";
 import { useSession } from "next-auth/react";
 import { Button as MuiButton } from "@mui/material";
+import toast from "react-hot-toast";
 
 const ColumnsWrapper = styled.div`
   display: grid;
@@ -152,6 +153,19 @@ export default function CartPage() {
       cartProducts,
       userId,
     });
+    if (
+      !name ||
+      !email ||
+      !city ||
+      !postalCode ||
+      !streetAddress ||
+      !country ||
+      !cartProducts ||
+      !userId
+    ) {
+      toast.error("請填妥訂單資訊 !");
+      return;
+    }
     if (response.data.url) {
       window.location = response.data.url;
     }
