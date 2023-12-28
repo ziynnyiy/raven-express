@@ -143,16 +143,6 @@ export default function CartPage() {
   }
 
   async function goToPayment() {
-    const response = await axios.post("/api/checkout", {
-      name,
-      email,
-      city,
-      postalCode,
-      streetAddress,
-      country,
-      cartProducts,
-      userId,
-    });
     if (
       !name ||
       !email ||
@@ -166,6 +156,17 @@ export default function CartPage() {
       toast.error("請填妥訂單資訊 !");
       return;
     }
+
+    const response = await axios.post("/api/checkout", {
+      name,
+      email,
+      city,
+      postalCode,
+      streetAddress,
+      country,
+      cartProducts,
+      userId,
+    });
     if (response.data.url) {
       window.location = response.data.url;
     }
